@@ -1,24 +1,27 @@
 import mongoose from "mongoose";
 
-const StudentSchema=new mongoose.Schema({
-    name:{
-        type:String,
-        required:true,
+const StudentSchema = new mongoose.Schema(
+  {
+    name: {
+      type: String,
+      required: true,
     },
-    address:{
-        type:String,
-        required:true,
+    address: {
+      type: String,
+      required: true,
     },
-    age:{
-        type:Number,
-        required:true,
+    age: {
+      type: Number,
+      required: true,
     },
-    email:{
-        type:String,
-        required:true,
+    email: {
+      type: String,
+      required: true,
     },
-},{timestamps:true});
+  },
+  { timestamps: true }
+);
 
-const StudentModel=mongoose.model("student",StudentSchema);
+const StudentModel = mongoose.model("student", StudentSchema);
 
 export default StudentModel;
