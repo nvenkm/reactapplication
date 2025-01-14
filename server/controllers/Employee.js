@@ -2,13 +2,29 @@ import EmployeeModel from "../models/Employee.js";
 
 export const CreateEmployee = async (req, res) => {
   try {
-    //declaring variable
-    const empData = await EmployeeModel.create({
-      //passing, it will come from view
+    console.log("lelo body:", req.body);
+
+    //Validations
+
+    //Name validation (Not more than 30 letters, can't be empty)
+
+    //Address validation (Not more than 100 letters, can't be empty)
+
+    //Salary validation
+    if (req.body.salary < 0) {
+      res.json({ message: "Salary cannot be negative" });
+      return;
+    }
+
+    const newEmployee = {
       name: req.body.name,
       address: req.body.address,
       salary: req.body.salary,
-    });
+    };
+
+    //declaring variable
+    const empData = await EmployeeModel.create(newEmployee);
+
     if (empData) res.status(201).send({ message: "Employee Created !!!" });
     else res.status(404).send({ message: "Unable to create employee !!!" });
   } catch (error) {

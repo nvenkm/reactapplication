@@ -20,13 +20,26 @@ function Employee() {
   //   }
   // }
 
+  // .then .catch
   function getAllEmployees() {
-    debugger;
+    // debugger;
     try {
+      // PROMISES : pending, fulfilled, rejected
+
       axios.get("http://127.0.0.1:8081/employee").then((d) => {
         console.log(d); // Check the response
         setEmployees(d.data.empData);
       });
+    } catch (error) {
+      alert("unable to call api !!!");
+    }
+  }
+
+  // async
+  async function getAllEmployeesAsync() {
+    try {
+      const res = await axios.get("http://127.0.0.1:8081/employee");
+      setEmployees(res.data.empData);
     } catch (error) {
       alert("unable to call api !!!");
     }
